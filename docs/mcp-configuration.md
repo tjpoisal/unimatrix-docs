@@ -47,6 +47,90 @@ The live, authoritative list is always the docs page:
 https://deployunimatrix.com/docs/mcp
 ```
 
+## Developer tools
+
+Developer-facing AI tools accept a remote MCP server. The same endpoint and bearer token work
+everywhere; the field names differ per client. Verified 2026-09-05.
+
+### opencode
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "unimatrix": {
+      "type": "remote",
+      "url": "https://deployunimatrix.com/api/mcp",
+      "headers": { "Authorization": "Bearer {env:UNIMATRIX_MCP_TOKEN}" },
+      "oauth": false
+    }
+  }
+}
+```
+
+`type` must be `"remote"`, and `oauth: false` is required so opencode sends the token instead of
+attempting MCP OAuth. Verify with `opencode mcp list` / `opencode mcp debug unimatrix`.
+
+### Claude Code
+
+```bash
+claude mcp add --transport http --scope user unimatrix https://deployunimatrix.com/api/mcp \
+  --header "Authorization: Bearer $UNIMATRIX_MCP_TOKEN"
+```
+
+In a project `.mcp.json` the entry must include `"type": "http"` (a URL-only entry fails silently).
+Environment expansion `${UNIMATRIX_MCP_TOKEN}` keeps secrets out of git.
+
+### Cline
+
+In `cline_mcp_settings.json` (VS Code globalStorage), the transport type is `"streamableHttp"` —
+omitting it defaults to the deprecated SSE transport and fails:
+
+```json
+{
+  "mcpServers": {
+    "unimatrix": {
+      "type": "streamableHttp",
+      "url": "https://deployunimatrix.com/api/mcp",
+      "headers": { "Authorization": "Bearer umx_your_api_key" }
+    }
+  }
+}
+```
+
+### Zed
+
+In `settings.json` under `context_servers`; include the `Authorization` header to skip the OAuth
+prompt (Unimatrix uses API keys, not OAuth):
+
+```json
+{
+  "context_servers": {
+    "unimatrix": {
+      "url": "https://deployunimatrix.com/api/mcp",
+      "headers": { "Authorization": "Bearer umx_your_api_key" }
+    }
+  }
+}
+```
+
+### VS Code / GitHub Copilot
+
+Workspace `.vscode/mcp.json` (or user-config via **MCP: Open User Configuration**), then confirm
+the server-trust prompt:
+
+```json
+{
+  "servers": {
+    "unimatrix": {
+      "type": "http",
+      "url": "https://deployunimatrix.com/api/mcp",
+      "headers": { "Authorization": "Bearer umx_your_api_key" }
+    }
+  }
+}
+```
+
 ## Notes
 
 - Memory written from any connected AI/device is available to every other connected AI/device.
