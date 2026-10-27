@@ -1,44 +1,34 @@
-# Unimatrix — Public Documentation
+# Unimatrix — public documentation
 
-**Unimatrix is persistent memory infrastructure for AI** — a shared, durable memory layer that
-Claude, ChatGPT, Gemini, Cursor, Windsurf, and custom agents read from and write to over the
-Model Context Protocol (MCP).
+Unimatrix is a shared persistent memory layer for supported AI tools. Save decisions and context through a connected client, then explicitly recall relevant memory elsewhere. Sources, relationships and corrections help preserve the reason behind an answer.
 
-- **Cross-LLM continuity** — start with one AI, continue with another. Same context, always.
-- **Cross-device sync** — iPhone, iPad, desktop, self-hosted server. The conversation never breaks.
-- **Encrypted & auditable** — AES-256-GCM at rest, TLS 1.3 in transit, explicit memory tool access,
-  audit logging, and Postgres row-level security.
-- **Self-hostable** — the full stack ships as Docker images for teams that need full data control.
+- **Connections:** MCP-capable clients, REST integrations, supported browser extensions, and desktop/mobile surfaces have different setup paths. Browser capture support does not imply a native MCP connection in every chat site.
+- **Memory:** hybrid retrieval, source lineage, temporal history and evidence-aware ranking are part of the memory architecture.
+- **2.0 code upgrade:** the TypeScript server implementation adds an Associative Memory Graph, explicit activation recall, reinforcement, interference handling and consolidation links. See the architecture guide for the boundary between source implementation and hosted availability.
+- **Control:** content encryption at rest, scoped access, tenant isolation and licensed Docker self-hosting. Processing can require plaintext; this is not a universal end-to-end encrypted memory service.
 
-> **The Unimatrix source code and build are proprietary and closed-source.** The live product,
-> documentation, and downloads live at **https://deployunimatrix.com**. This repository contains
-> only public-facing documentation and media assets; it is not a mirror of the product source.
+The product source is proprietary and private. This repository contains only approved public documentation, not product source, internal runbooks or customer data.
 
-## Quick links
+## Start here
 
-| Resource | URL |
-|---|---|
-| Product | https://deployunimatrix.com |
-| MCP configuration guide | [`docs/mcp-configuration.md`](docs/mcp-configuration.md) |
-| Live API documentation | https://deployunimatrix.com/docs/api |
-| MCP reference | https://deployunimatrix.com/docs/mcp |
-| Quickstart | https://deployunimatrix.com/quickstart |
-| Prompt library (free, no signup) | https://deployunimatrix.com/prompts |
-| Help center | https://deployunimatrix.com/help |
-| Press & media kit | https://deployunimatrix.com/press |
-| Media boilerplate & facts | [`docs/media-kit.md`](docs/media-kit.md) |
+| Resource | Guide |
+| --- | --- |
+| Product | [Unimatrix](https://www.deployunimatrix.com) |
+| Architecture | [2.0 overview](docs/architecture.md) |
+| Client setup | [MCP configuration](docs/mcp-configuration.md) |
+| Quickstart | [Connect a client](https://www.deployunimatrix.com/quickstart) |
+| MCP tools | [Tool reference](https://www.deployunimatrix.com/docs/mcp) |
+| REST | [API reference](https://www.deployunimatrix.com/docs/api) |
+| Documentation | [Docs hub](https://www.deployunimatrix.com/docs) |
+| Security | [Security model](https://www.deployunimatrix.com/security) |
+| Hosting | [Deployment](https://www.deployunimatrix.com/deployment) |
+| Release notes | [Code upgrade notes](https://www.deployunimatrix.com/changelog) |
+| Press | [Media kit](docs/media-kit.md) |
 
-## Contributing docs
+## Contributing
 
-Open a pull request against this repository. The documentation in this repo mirrors the public
-pages on deployunimatrix.com; factual updates must match what the live product actually does.
+Update architecture, client setup and public claims together. Distinguish code implementation, testing and deployed availability. Never mirror private source or credentials into this repository.
 
-## License
+## License and contact
 
-The documents and assets in this repository are licensed under the
-[Creative Commons Attribution 4.0 International](LICENSE) license (CC BY 4.0). The Unimatrix
-name, logos, and marks remain property of Cimbro LLC and may only be used per the media kit terms.
-
-## Contact
-
-Press and interview requests: **hello@deployunimatrix.com**
+Documents are licensed under [CC BY 4.0](LICENSE). Unimatrix names, logos and marks remain property of Cimbro LLC. Contact: **hello@deployunimatrix.com**.
