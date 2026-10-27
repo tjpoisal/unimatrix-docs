@@ -3,7 +3,7 @@
 The customer-facing Model Context Protocol endpoint is provided by the Unimatrix web app at:
 
 ```
-https://deployunimatrix.com/api/mcp
+https://www.deployunimatrix.com/api/mcp
 ```
 
 You authenticate with your Unimatrix API key (a `umx_...` token issued in your account's
@@ -11,46 +11,18 @@ You authenticate with your Unimatrix API key (a `umx_...` token issued in your a
 
 ## Configuration
 
-Add the server to your MCP client's config (the exact file depends on the client — for Claude
-Desktop it is `claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "unimatrix": {
-      "url": "https://deployunimatrix.com/api/mcp",
-      "apiKey": "YOUR_UMX_API_KEY"
-    }
-  }
-}
-```
-
-Some clients label the key field `headers` or `authorizationHeader`; you can equivalently send the
-key as a bearer token: `Authorization: Bearer YOUR_UMX_API_KEY`.
+Use the configuration format supported by your client. The required transport is HTTP MCP and the request must carry `Authorization: Bearer <your API key>`. A generic `apiKey` property is not a universal client schema. Use the [client quickstart](https://www.deployunimatrix.com/quickstart) and the client-specific examples below; verify the installed client's supported format/version.
 
 ## Tool surface
 
-The endpoint exposes a memory toolset over MCP. At the time of writing the production tools
-include:
+Inspect the deployed endpoint's advertised tools and [MCP reference](https://www.deployunimatrix.com/docs/mcp). Space discovery, explicit store/search, recent memory, hybrid recall, sessions and Loom workflow tools have different requirements.
 
-- `unimatrix_list_spaces`, `unimatrix_get_space`, `unimatrix_create_space`,
-  `unimatrix_create_child_space` — workspaces and their hierarchy
-- `unimatrix_store_memory` — save a memory from the current conversation
-- `unimatrix_search_memories` — semantic search across all memories
-- `unimatrix_list_memories`, `unimatrix_update_memory`
-- `unimatrix_get_recent` — most recent memories across all devices/LLMs; a good first call in a new
-  session to continue where a previous model left off
-
-The live, authoritative list is always the docs page:
-
-```
-https://deployunimatrix.com/docs/mcp
-```
+The 2.0 code adds optional associative activation through `unimatrix_recall` with `activate: true`, or `unimatrix_activate_memory` with a required `query`. This is not enabled on every search. Matching deployed services and migrations are required; see [architecture and availability](architecture.md).
 
 ## Developer tools
 
 Developer-facing AI tools accept a remote MCP server. The same endpoint and bearer token work
-everywhere; the field names differ per client. Verified 2026-09-05.
+everywhere; the field names differ per client. Examples originate from the September 2026 client review; installed-client compatibility has not been reverified for every client in this documentation update.
 
 ### opencode
 
@@ -60,7 +32,7 @@ everywhere; the field names differ per client. Verified 2026-09-05.
   "mcp": {
     "unimatrix": {
       "type": "remote",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer {env:UNIMATRIX_MCP_TOKEN}" },
       "oauth": false
     }
@@ -74,7 +46,7 @@ attempting MCP OAuth. Verify with `opencode mcp list` / `opencode mcp debug unim
 ### Claude Code
 
 ```bash
-claude mcp add --transport http --scope user unimatrix https://deployunimatrix.com/api/mcp \
+claude mcp add --transport http --scope user unimatrix https://www.deployunimatrix.com/api/mcp \
   --header "Authorization: Bearer $UNIMATRIX_MCP_TOKEN"
 ```
 
@@ -91,7 +63,7 @@ omitting it defaults to the deprecated SSE transport and fails:
   "mcpServers": {
     "unimatrix": {
       "type": "streamableHttp",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }
@@ -107,7 +79,7 @@ prompt (Unimatrix uses API keys, not OAuth):
 {
   "context_servers": {
     "unimatrix": {
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }
@@ -124,7 +96,7 @@ the server-trust prompt:
   "servers": {
     "unimatrix": {
       "type": "http",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }
@@ -133,7 +105,6 @@ the server-trust prompt:
 
 ## Notes
 
-- Memory written from any connected AI/device is available to every other connected AI/device.
+- Memory can be recalled by another properly authenticated client within the same authorized scope; it is not automatically injected into every conversation.
 - Content is encrypted at rest and access is explicit per-tool, with audit logging.
-- Self-hosted instances expose the same MCP surface at their own `/api/mcp` route (or `/mcp` on the
-  app's MCP service); configure your URL to match your deployment.
+- Self-hosted clients should use the web origin’s `/api/mcp` route. The internal processing service address is not the recommended customer endpoint.
