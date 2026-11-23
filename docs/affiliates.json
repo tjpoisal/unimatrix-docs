@@ -1,0 +1,37 @@
+{
+  "disclosure": "Some links may be affiliate links. If a referral URL is configured and you buy through it, Unimatrix may earn a commission, at no extra cost to you.",
+  "programs": [
+    {
+      "slug": "railway",
+      "name": "Railway",
+      "officialUrl": "https://railway.com/",
+      "signupUrl": "https://docs.railway.com/community/affiliate-program",
+      "affiliateUrl": "",
+      "notes": "Paste the full Railway referral link after you copy it from the workspace Refer page. No separate application."
+    },
+    {
+      "slug": "digitalocean",
+      "name": "DigitalOcean",
+      "officialUrl": "https://www.digitalocean.com/",
+      "signupUrl": "https://www.digitalocean.com/affiliates",
+      "affiliateUrl": "",
+      "notes": "Start on the official affiliates page (it currently sends publishers to CJ). Paste the full tracking URL here after approval."
+    },
+    {
+      "slug": "namecheap",
+      "name": "Namecheap",
+      "officialUrl": "https://www.namecheap.com/",
+      "signupUrl": "https://www.namecheap.com/affiliates/",
+      "affiliateUrl": "",
+      "notes": "Join through Impact or Commission Junction from the official page, then paste one platform's tracking URL. Do not also promote Namecheap from an adult site."
+    },
+    {
+      "slug": "pinecone",
+      "name": "Pinecone",
+      "officialUrl": "https://www.pinecone.io/",
+      "signupUrl": "https://dash.partnerstack.com/application?company=pinecone&group=affiliateprogram",
+      "affiliateUrl": "",
+      "notes": "PartnerStack application. Qualifying customers are Standard-tier or higher per the official agreement. 180-day referral period."
+    }
+  ]
+}
