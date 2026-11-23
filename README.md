@@ -27,6 +27,7 @@ Model Context Protocol (MCP).
 | Help center | https://deployunimatrix.com/help |
 | Press & media kit | https://deployunimatrix.com/press |
 | Media boilerplate & facts | [`docs/media-kit.md`](docs/media-kit.md) |
+| Recommended stack (affiliate-ready) | [`docs/recommended-stack.md`](docs/recommended-stack.md) |
 
 ## Contributing docs
 
