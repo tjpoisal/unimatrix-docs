@@ -39,7 +39,7 @@ Keep ordinary connection, recall and handoff instructions free. A separate paid 
 
 ## Channel status
 
-Repository marketplace, Cursor connection package and portable skills are prepared here. Official Claude/Cursor approvals, Agensi listing, and live authenticated client verification are pending. The public `server.json` describes the hosted remote for directory submission. Registry publication requires namespace verification and its own successful receipt. Glama's open-source hosting path does not imply that Unimatrix's proprietary service can be mirrored publicly. Smithery is a discovery directory following its proxy shutdown.
+Repository marketplace, Cursor connection package and portable skills are prepared here. Official Claude/Cursor approvals, Agensi listing, and live authenticated client verification are pending. The official MCP Registry already lists `com.deployunimatrix/unimatrix` version `0.1.0`, verified on 2026-11-27. The public `server.json` prepares a `0.1.1` update using this public companion repository. Publishing that update requires the existing namespace credentials and its own receipt. Do not create a duplicate namespace. Glama's open-source hosting path does not imply that Unimatrix's proprietary service can be mirrored publicly. Smithery is a discovery directory following its proxy shutdown.
 
 Use https://www.agensi.io/sell for a free companion listing first and confirm support for an externally hosted authenticated MCP. Test a paid workflow separately after pricing and deliverables are validated. ChatGPT app commerce eligibility needs separate confirmation for digital subscriptions. GitHub Marketplace and Apify require additional product integrations and are later channels.
 
