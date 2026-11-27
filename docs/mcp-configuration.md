@@ -3,30 +3,33 @@
 The customer-facing Model Context Protocol endpoint is provided by the Unimatrix web app at:
 
 ```
-https://deployunimatrix.com/api/mcp
+https://www.deployunimatrix.com/api/mcp
 ```
 
 You authenticate with your Unimatrix API key (a `umx_...` token issued in your account's
-**Settings → MCP** page on deployunimatrix.com).
+**Settings → API Keys** page on deployunimatrix.com).
 
 ## Configuration
 
-Add the server to your MCP client's config (the exact file depends on the client — for Claude
-Desktop it is `claude_desktop_config.json`):
+For Claude Code, add the following project `.mcp.json` entry and provide
+`UNIMATRIX_API_KEY` through the client environment. Other clients have different
+transport and credential fields; use the client-specific examples below.
 
 ```json
 {
   "mcpServers": {
     "unimatrix": {
-      "url": "https://deployunimatrix.com/api/mcp",
-      "apiKey": "YOUR_UMX_API_KEY"
+      "type": "http",
+      "url": "https://www.deployunimatrix.com/api/mcp",
+      "headers": { "Authorization": "Bearer ${UNIMATRIX_API_KEY}" }
     }
   }
 }
 ```
 
-Some clients label the key field `headers` or `authorizationHeader`; you can equivalently send the
-key as a bearer token: `Authorization: Bearer YOUR_UMX_API_KEY`.
+The service authenticates the `Authorization: Bearer ...` header. Keep real keys
+out of tracked files. The companion plugin can prompt for the key directly.
+See [marketplace installation](marketplaces.md).
 
 ## Tool surface
 
@@ -44,13 +47,14 @@ include:
 The live, authoritative list is always the docs page:
 
 ```
-https://deployunimatrix.com/docs/mcp
+https://www.deployunimatrix.com/docs/mcp
 ```
 
 ## Developer tools
 
-Developer-facing AI tools accept a remote MCP server. The same endpoint and bearer token work
-everywhere; the field names differ per client. Verified 2026-09-05.
+Developer-facing AI tools accept a remote MCP server. The endpoint and bearer-token contract are shared, while support and field names
+vary by client. Historical examples below were documented on 2026-09-05 and require
+validation against the installed client version.
 
 ### opencode
 
@@ -60,7 +64,7 @@ everywhere; the field names differ per client. Verified 2026-09-05.
   "mcp": {
     "unimatrix": {
       "type": "remote",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer {env:UNIMATRIX_MCP_TOKEN}" },
       "oauth": false
     }
@@ -74,7 +78,7 @@ attempting MCP OAuth. Verify with `opencode mcp list` / `opencode mcp debug unim
 ### Claude Code
 
 ```bash
-claude mcp add --transport http --scope user unimatrix https://deployunimatrix.com/api/mcp \
+claude mcp add --transport http --scope user unimatrix https://www.deployunimatrix.com/api/mcp \
   --header "Authorization: Bearer $UNIMATRIX_MCP_TOKEN"
 ```
 
@@ -91,7 +95,7 @@ omitting it defaults to the deprecated SSE transport and fails:
   "mcpServers": {
     "unimatrix": {
       "type": "streamableHttp",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }
@@ -107,7 +111,7 @@ prompt (Unimatrix uses API keys, not OAuth):
 {
   "context_servers": {
     "unimatrix": {
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }
@@ -124,7 +128,7 @@ the server-trust prompt:
   "servers": {
     "unimatrix": {
       "type": "http",
-      "url": "https://deployunimatrix.com/api/mcp",
+      "url": "https://www.deployunimatrix.com/api/mcp",
       "headers": { "Authorization": "Bearer umx_your_api_key" }
     }
   }

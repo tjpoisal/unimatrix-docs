@@ -1,0 +1,16 @@
+{
+  "name": "unimatrix-plugins",
+  "owner": {
+    "name": "Timothy Poisal"
+  },
+  "plugins": [
+    {
+      "name": "unimatrix",
+      "source": "./",
+      "description": "Retrieve project context and save explicit handoffs through the Unimatrix MCP service."
+    }
+  ],
+  "metadata": {
+    "description": "Companion workflows for Unimatrix project memory."
+  }
+}

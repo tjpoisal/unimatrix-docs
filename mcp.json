@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "unimatrix": {
+      "url": "https://www.deployunimatrix.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${UNIMATRIX_API_KEY}"
+      }
+    }
+  }
+}

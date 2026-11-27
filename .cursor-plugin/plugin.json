@@ -1,0 +1,29 @@
+{
+  "name": "unimatrix",
+  "version": "0.1.0",
+  "description": "Retrieve project context and save explicit handoffs through the Unimatrix MCP service.",
+  "author": {
+    "name": "Timothy Poisal"
+  },
+  "homepage": "https://www.deployunimatrix.com",
+  "repository": "https://github.com/tjpoisal/unimatrix-docs",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "mcp",
+    "agent-skills",
+    "unimatrix"
+  ],
+  "variables": {
+    "type": "object",
+    "properties": {
+      "UNIMATRIX_API_KEY": {
+        "type": "string",
+        "title": "Unimatrix API key",
+        "description": "Scoped API key. Set in Plugins > Configure."
+      }
+    },
+    "required": [
+      "UNIMATRIX_API_KEY"
+    ]
+  }
+}
