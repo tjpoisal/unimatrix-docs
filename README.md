@@ -42,3 +42,10 @@ name, logos, and marks remain property of Cimbro LLC and may only be used per th
 ## Contact
 
 Press and interview requests: **hello@deployunimatrix.com**
+## Agent skills and marketplace installation
+
+Install the companion skills and find client setup, listing status, and pricing boundaries in [the marketplace guide](docs/marketplaces.md).
+
+```text
+/plugin install unimatrix --marketplace tjpoisal/unimatrix-docs
+```

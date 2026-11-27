@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.deployunimatrix/unimatrix",
+  "title": "Unimatrix",
+  "version": "0.1.1",
+  "description": "Persistent memory for supported AI clients. Store, retrieve and correct explicit project context.",
+  "repository": {
+    "url": "https://github.com/tjpoisal/unimatrix-docs",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.deployunimatrix.com/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer umx_<your-scoped-key> from Settings \u2192 API Keys.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
